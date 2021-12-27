@@ -20,7 +20,7 @@ It shows:
 cp .env.local.example .env.local
 ```
 
-Set the `CLIENT_ID` and `CLIENT_SECRET` accordingly to the values you see in the integration console if you edit your integration.
+[Contact us]() to retrieve your `CLIENT_ID` and `CLIENT_SECRET`.
 
 4. Install all dependencies
 
@@ -36,7 +36,7 @@ npm run dev
 
 6. Add it to a project
 
-Now your example app is running on `http://localhost:3000`. Click on "View in Marketplace" to see your integration with all details like others will see it. You're now able to install your app on an account. Once you click "install" you see a popup that will use the defined Redirect URL `http://localhost:3000/callback`. The app is now installed.
+Now your example app is running on `http://localhost:3000`. Click on "View in Marketplace" to see your integration with all details like others will see it. You're now able to install your app on an account. Once you click "Install" you see a popup that will use the defined Redirect URL `http://localhost:3000/callback`. The app is now installed.
 
 
 
