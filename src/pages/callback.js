@@ -1,11 +1,13 @@
 import { updateAccount } from '../services/hyper.service';
 const particlesConfig = require('../constants/particles_config');
 
-export default function Callback() {
+export default function Callback({ account }) {
   return (
     <div>
       <main>
-        Success
+        Success! We&apos;ve added snow to {account}. Take a look at
+        your <a href={`https://${account.domain}`}>wintery site</a>, or
+        click <a href="https://hyper.co/dashboard">here</a> to return to Hyper.
       </main>
     </div>
   )
@@ -19,21 +21,24 @@ export async function getServerSideProps({ query }) {
     }
   }
 
-  let account = null;
-  let error = null;
-
   try {
-    account = await updateAccount(query.account, {
-      'metadata.snow': JSON.stringify(particlesConfig),
+    const account = await updateAccount(query.account, {
+      metadata: {
+        particles: JSON.stringify(particlesConfig),
+      },
     });
-  } catch (e) {
-    error = e;
-  }
 
-  return {
-    props: {
-      account,
-      error,
-    },
+    return {
+      props: {
+        account: account.name,
+      },
+    }
+  } catch (e) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
+    }
   }
 }
