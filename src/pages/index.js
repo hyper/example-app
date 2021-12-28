@@ -1,16 +1,15 @@
-import Head from 'next/head'
-
-export default function Home() {
+export default function Home({ app }) {
   return (
-    <div>
-      <Head>
-        <title>Snow — Hyper</title>
-        <meta name="description" content="Add snow to your member portal" />
-      </Head>
-
-      <main>
-        Hello, World!
-      </main>
-    </div>
+    <main>
+      <a href={`https://hyper.co/apps/${app}`} target="_blank" rel="noreferrer">Open app in Hyper</a>
+    </main>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      app: process.env.HYPER_CLIENT_ID,
+    },
+  }
 }
